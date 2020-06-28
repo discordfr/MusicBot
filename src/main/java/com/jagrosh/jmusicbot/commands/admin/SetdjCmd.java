@@ -33,7 +33,7 @@ public class SetdjCmd extends AdminCommand
     public SetdjCmd(Bot bot)
     {
         this.name = "setdj";
-        this.help = "Définir un role DJ pour utiliser les commandes de modération de la queue";
+        this.help = "Définir un rôle DJ pour utiliser les commandes de modération de la queue";
         this.arguments = "<Nom du role|NONE>";
         this.aliases = bot.getConfig().getAliases(this.name);
     }
@@ -43,20 +43,20 @@ public class SetdjCmd extends AdminCommand
     {
         if(event.getArgs().isEmpty())
         {
-            event.reply(event.getClient().getError()+" Merci de spécifier le nom d'un role ou \"NONE\"");
+            event.reply(event.getClient().getError()+" Merci de spécifier le nom d'un rôle ou \"NONE\"");
             return;
         }
         Settings s = event.getClient().getSettingsFor(event.getGuild());
         if(event.getArgs().equalsIgnoreCase("none"))
         {
             s.setDJRole(null);
-            event.reply(event.getClient().getSuccess()+" Le role DJ a été désactivé, seuls les Administrateurs peuvent utiliser les commandes de modération de la queue.");
+            event.reply(event.getClient().getSuccess()+" Le rôle DJ a été désactivé, seuls les administrateurs peuvent utiliser les commandes de modération de la queue.");
         }
         else
         {
             List<Role> list = FinderUtil.findRoles(event.getArgs(), event.getGuild());
             if(list.isEmpty())
-                event.reply(event.getClient().getWarning()+" Aucun rôles trouvés avec le nom \""+event.getArgs()+"\"");
+                event.reply(event.getClient().getWarning()+" Aucun rôle n'a été trouvé avec le nom \""+event.getArgs()+"\"");
             else if (list.size()>1)
                 event.reply(event.getClient().getWarning()+FormatUtil.listOfRoles(list, event.getArgs()));
             else
