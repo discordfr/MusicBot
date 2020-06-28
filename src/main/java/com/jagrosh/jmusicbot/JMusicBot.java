@@ -82,8 +82,8 @@ public class JMusicBot
         Bot bot = new Bot(waiter, config, settings);
         
         AboutCommand aboutCommand = new AboutCommand(Color.BLUE.brighter(),
-                                "un bot musique [facile à héberger vous même!](https://github.com/jagrosh/MusicBot) (v"+version+")",
-                                new String[]{"Musique de haute qualité", "Technologie FairQueue™", "Facile à héberger vous même"},
+                                "un bot musique [facile à héberger par vous même!](https://github.com/jagrosh/MusicBot) (v"+version+")",
+                                new String[]{"Musique de haute qualité", "Technologie FairQueue™", "Facile à héberger par vous même"},
                                 RECOMMENDED_PERMS);
         aboutCommand.setIsAuthor(false);
         aboutCommand.setReplacementCharacter("\uD83C\uDFB6"); // 🎶
@@ -187,13 +187,13 @@ public class JMusicBot
         {
             prompt.alert(Prompt.Level.ERROR, "JMusicBot", ex + "\nMerci d'être sur que vous "
                     + "éditez le fichier config.txt, et que vous avez utilisé un "
-                    + "token correct \nLocation de la config: " + config.getConfigLocation());
+                    + "token correct \nEmplacement du fichier de configuration: " + config.getConfigLocation());
             System.exit(1);
         }
         catch(IllegalArgumentException ex)
         {
             prompt.alert(Prompt.Level.ERROR, "JMusicBot", "Certains aspects de la configuration sont "
-                    + "invalides: " + ex + "\nLocation de la config: " + config.getConfigLocation());
+                    + "invalides: " + ex + "\nEmplacement du fichier de configuration: " + config.getConfigLocation());
             System.exit(1);
         }
     }
