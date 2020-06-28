@@ -33,7 +33,7 @@ public class SettcCmd extends AdminCommand
     public SettcCmd(Bot bot)
     {
         this.name = "settc";
-        this.help = "Définir un channel pour les commandes de musiques";
+        this.help = "Définir un salon pour les commandes de musiques";
         this.arguments = "<channel|NONE>";
         this.aliases = bot.getConfig().getAliases(this.name);
     }
@@ -43,26 +43,26 @@ public class SettcCmd extends AdminCommand
     {
         if(event.getArgs().isEmpty())
         {
-            event.reply(event.getClient().getError()+" Merci de spécifier un channel ou \"NONE\"");
+            event.reply(event.getClient().getError()+" Merci de spécifier un salon textuel ou \"NONE\"");
             return;
         }
         Settings s = event.getClient().getSettingsFor(event.getGuild());
         if(event.getArgs().equalsIgnoreCase("none"))
         {
             s.setTextChannel(null);
-            event.reply(event.getClient().getSuccess()+" Les commandes de musiques peuvent maintenant être utilisées dans tout les channels textuels.");
+            event.reply(event.getClient().getSuccess()+" Les commandes de musiques peuvent désormais être utilisées dans tout les salons textuels.");
         }
         else
         {
             List<TextChannel> list = FinderUtil.findTextChannels(event.getArgs(), event.getGuild());
             if(list.isEmpty())
-                event.reply(event.getClient().getWarning()+" Aucun channel textuel trouvé avec le nom \""+event.getArgs()+"\"");
+                event.reply(event.getClient().getWarning()+" Aucun salon textuel n'a été trouvé avec le nom \""+event.getArgs()+"\"");
             else if (list.size()>1)
                 event.reply(event.getClient().getWarning()+FormatUtil.listOfTChannels(list, event.getArgs()));
             else
             {
                 s.setTextChannel(list.get(0));
-                event.reply(event.getClient().getSuccess()+" Les commandes de musiques ne peuvent maintenant être utilisées que dans le channel <#"+list.get(0).getId()+">");
+                event.reply(event.getClient().getSuccess()+" Les commandes de musiques peuvent désormais uniquement être utilisées dans le salon textuel <#"+list.get(0).getId()+">");
             }
         }
     }
