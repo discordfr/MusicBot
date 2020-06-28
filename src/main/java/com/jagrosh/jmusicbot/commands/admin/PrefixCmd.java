@@ -47,12 +47,12 @@ public class PrefixCmd extends AdminCommand
         if(event.getArgs().equalsIgnoreCase("none"))
         {
             s.setPrefix(null);
-            event.replySuccess("Le préfix a été enlevé.");
+            event.replySuccess("Le préfix personnalisé a été retiré.");
         }
         else
         {
             s.setPrefix(event.getArgs());
-            event.replySuccess("Préfix personnalisé défini en `" + event.getArgs() + "` sur *" + event.getGuild().getName() + "*");
+            event.replySuccess("Le préfix personnalisé est désormais `" + event.getArgs() + "` sur *" + event.getGuild().getName() + "*");
         }
     }
 }
